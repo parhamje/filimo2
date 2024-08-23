@@ -2,9 +2,9 @@
   font-family: "IRANSansWeb";
   src: url("../font/IRANSansWeb.eot");
   src: url("../font/IRANSansWeb.eot?#iefix") format("embedded-opentype"),
-       url("../font/IRANSansWeb.woff2") format("woff2"),
-       url("../font/IRANSansWeb.woff") format("woff"),
-       url("../font/IRANSansWeb.ttf") format("truetype");
+    url("../font/IRANSansWeb.woff2") format("woff2"),
+    url("../font/IRANSansWeb.woff") format("woff"),
+    url("../font/IRANSansWeb.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -13,11 +13,15 @@
   margin: 0;
   padding: 0;
   font-family: IRANSansWeb;
+  box-sizing: border-box;
 }
 body {
   background-color: #151515;
   color: white;
   overflow-x: hidden;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 .navbar {
   position: fixed;
@@ -129,6 +133,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .topsw .swiper-slide img {
@@ -136,6 +141,7 @@ body {
   height: 100vh;
   object-fit: cover;
 }
+
 .topsw .swiper-slide::before {
   content: "";
   position: absolute;
@@ -143,27 +149,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-radial-gradient(
-    41% 40%,
-    130% 44%,
-    rgba(0, 0, 0, 0) 0,
-    #151515 90%
-  );
-  background: -moz-radial-gradient(
-    41% 40%,
-    130% 44%,
-    rgba(0, 0, 0, 0) 0,
-    #151515 90%
-  );
-  background: -o-radial-gradient(
-    41% 40%,
-    130% 44%,
-    rgba(0, 0, 0, 0) 0,
-    #151515 90%
-  );
   background: radial-gradient(
     130% 44% at 41% 40%,
-    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 0%,
     #292929 90%
   );
 }
@@ -191,6 +179,7 @@ body {
 
 .topsw .overlay-content {
   text-align: center;
+  padding: 0 20px;
 }
 
 .topsw .overlay-title {
@@ -215,6 +204,7 @@ body {
   padding-bottom: 30px;
   padding-top: 40px;
 }
+
 .topsw .overlay-text .feature-item {
   margin: 0 40px;
   display: flex;
@@ -227,6 +217,7 @@ body {
   direction: rtl;
   font-weight: bold;
 }
+
 .topsw .overlay-text .feature-item .checkmark-icon {
   width: 24px;
   height: 24px;
@@ -237,6 +228,7 @@ body {
   align-items: center;
   margin-left: 5px;
 }
+
 .topsw .overlay-text .feature-item .checkmark-icon svg {
   width: 16px;
   height: 16px;
@@ -478,9 +470,12 @@ input:checked + .slider:before {
   color: #fff;
   position: relative;
   overflow: hidden;
-  width: 1600px; /* Make it responsive by setting a max-width */
-  height: 480px;
+  width: 100%;
+  max-width: 1600px; /* Make it responsive by setting a max-width */
+  height: auto;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mainsection::before {
@@ -500,43 +495,11 @@ input:checked + .slider:before {
 }
 
 #series5::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("../images/backgroundzaxm.webp");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  filter: blur(2px);
-  z-index: 1;
-  opacity: 0.6;
 }
 
 #series4::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("../images/jokerback.jpg");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  filter: blur(2px);
-  z-index: 1;
-  opacity: 0.6;
-}
-#series4 .mainsection div.title {
-  position: absolute;
-  top: 10px;
-
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
 }
 
 .mainsection::after {
@@ -549,6 +512,7 @@ input:checked + .slider:before {
   background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
   z-index: 2;
 }
+
 .mainsection .container {
   position: relative;
   z-index: 3; /* Place content above the background */
@@ -707,8 +671,10 @@ input:checked + .slider:before {
   padding: 50px 0;
   background-color: #151515;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  flex-wrap: wrap; /* Ensure wrapping for smaller screens */
+  gap: 20px; /* Add space between elements */
 }
 
 .filimo-watch-section .text-section {
@@ -1732,408 +1698,819 @@ input:checked + .slider:before {
   display: block;
 }
 
-
-/* Responsive Design */
-@media screen and (max-width: 1200px) {
-  .navbar .container-fluid a {
-    font-size: 12px;
-    margin-right: 15px;
+/* Media Queries */
+@media (max-width: 1200px) {
+  .mainsection .title,
+  #series4 .title,
+  #series5 .title {
+    left: auto;
+    right: 10px;
   }
 
   .container-fluid .btnb {
-    margin-right: 100px;
-    width: 90px;
-    height: 35px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar .container-fluid a {
+    margin-right: 10px;
+    padding-right: 5px;
+    font-size: 12px;
   }
 
-  .container-fluid .btnb span {
-    font-size: 10px;
-  }
-
-  .container-fluid a img {
-    width: 80px;
-    height: 35px;
-  }
-
-  .topsw .swiper-slide img {
-    height: 80vh;
+  .gallery {
+    gap: 20px;
   }
 
   .gallery img {
-    width: 140px;
-    height: 180px;
+    max-width: 140px;
   }
 
-  .filter-buttons button {
-    padding: 8px 16px;
+  .mainsection .title,
+  #series4 .title,
+  #series5 .title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .container-fluid a {
+    font-size: 12px;
+    padding-top: 10px;
   }
 
   .mainsection .header img {
-    margin-left: 50px;
     width: 150px;
   }
 
-  .mainsection .title {
-    left: 980px;
-  }
-
-  .mainsection .episode {
-    width: 250px;
-    height: 160px;
-  }
-
-  .navbar .container-fluid a {
-    font-size: 10px;
-    margin-right: 10px;
-  }
-
-  .container-fluid .btnb {
-    margin-right: 50px;
-    width: 80px;
-    height: 30px;
-  }
-
-  .container-fluid .btnb span {
-    font-size: 8px;
-  }
-
-  .container-fluid a img {
-    width: 70px;
-    height: 30px;
-  }
-
-  .topsw .swiper-slide img {
-    height: 60vh;
-  }
-
-  .gallery img {
-    width: 120px;
-    height: 160px;
-  }
-
-  .filter-buttons button {
-    padding: 6px 12px;
-  }
-
-  .mainsection .header img {
-    margin-left: 20px;
-    width: 120px;
+  .container-fluid .btnb,
+  .container-fluid .sign {
+    width: 100%;
+    margin: 10px 0;
   }
 
   .mainsection .title {
-    left: 780px;
+    font-size: 16px;
+    text-align: center;
   }
 
+  .mainsection .description {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .mainsection .episode-list {
+    flex-direction: column;
+    align-items: center;
+  }
   .mainsection .episode {
-    width: 200px;
-    height: 140px;
+    max-width: 100%; /* Full-width episodes on mobile */
+    margin-bottom: 20px;
   }
 
-
-
-  .navbar .container-fluid a {
-    font-size: 8px;
-    margin-right: 5px;
+  .topsw .overlay-title {
+    font-size: 20px;
   }
 
-  .container-fluid .btnb {
-    margin-right: 20px;
-    width: 70px;
-    height: 25px;
+  .topsw .overlay-subtitle {
+    font-size: 30px;
   }
 
-  .container-fluid .btnb span {
-    font-size: 7px;
+  .topsw .overlay-text {
+    margin: 5px 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 
-  .container-fluid a img {
-    width: 60px;
-    height: 25px;
+  .topsw .overlay-text .feature-item {
+    margin: 0 20px;
+    font-size: 15px;
   }
 
-  .topsw .swiper-slide img {
+  .topsw .btn-overlay {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .topsw .adjust-this-image {
     height: 40vh;
   }
 
-  .gallery img {
-    width: 100px;
-    height: 140px;
+  .container-fluid a img {
+    width: 80px;
+    height: auto;
   }
+}
 
-  .filter-buttons button {
-    padding: 4px 8px;
+@media (max-width: 576px) {
+  .navbar .container-fluid a {
+    font-size: 10px;
+    margin-right: 5px;
   }
 
   .mainsection .header img {
-    margin-left: 10px;
-    width: 100px;
+    width: 120px;
+  }
+
+  .topsw .overlay-title {
+    font-size: 18px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 24px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 10px;
+    font-size: 13px;
+  }
+
+  .topsw .btn-overlay {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
   }
 
   .mainsection .title {
-    left: 580px;
+    font-size: 14px;
+  }
+
+  .mainsection .description {
+    font-size: 14px;
   }
 
   .mainsection .episode {
-    width: 150px;
-    height: 120px;
+    max-width: 100%; /* Full-width episodes on mobile */
   }
 
+  .gallery img {
+    max-width: 100px;
+  }
 
-/* Tablet View (768px and below) */
+  .mainsection .episode-title {
+    font-size: 14px;
+  }
 
+  .topsw .adjust-this-image {
+    height: 30vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .container-fluid a {
+    font-size: 9px;
+  }
+
+  .container-fluid a img {
+    width: 70px;
+    height: auto;
+    padding-right: 10px;
+  }
+
+  .topsw .overlay-title {
+    font-size: 16px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 20px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+
+  .topsw .btn-overlay {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .mainsection .title {
+    font-size: 12px;
+  }
+
+  .mainsection .description {
+    font-size: 13px;
+  }
+
+  .mainsection .episode-title {
+    font-size: 12px;
+  }
+
+  .gallery img {
+    max-width: 80px;
+  }
+
+  .topsw .adjust-this-image {
+    height: 25vh;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  /* Filimo Watch Section */
   .filimo-watch-section {
     flex-direction: column;
     align-items: center;
-    padding: 30px 10px;
+    padding: 30px 0;
   }
 
   .filimo-watch-section .text-section {
-    margin: 30px 0;
-    text-align: center;
+    margin-top: 50px;
     margin-left: 0;
-    margin-right: 0;
-  }
-
-  .filimo-watch-section .text-section h2 {
-    font-size: 16px;
-    line-height: 1.3;
-  }
-
-  .filimo-watch-section .text-section p {
-    font-size: 12px;
-    line-height: 22px;
     text-align: center;
-  }
-
-  .filimo-watch-section .devices {
-    align-items: center;
-  }
-
-  .filimo-watch-section .device {
-    justify-content: center;
-    margin-bottom: -40px;
   }
 
   .filimo-watch-section .subscribe-button {
     margin-left: 0;
-    margin-top: 20px;
-    width: 140px;
-    height: 36px;
-    font-size: 13px;
+    margin-top: 30px;
   }
 
   .filimo-watch-section .images-section {
+    margin-left: 0;
+  }
+
+  .filimo-watch-section .image-container {
+    margin-left: 0;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  /* Filimo TV Watch Section */
+  .filimo-tv-watch-section .text-section h2 {
+    margin-right: 0;
+  }
+
+  .filimo-tv-watch-section .text-section p {
+    margin-left: 0;
+  }
+
+  .filimo-tv-watch-section .subscribe-button {
+    left: 0;
+  }
+
+  /* Free Videos */
+  .freevid h3 {
+    margin-right: 0;
+    font-size: 22px;
+  }
+
+  .freevid .swiper {
+    width: 100%;
+    height: auto;
+  }
+
+  .freevid .swiper-slide {
+    width: 140px;
+    height: 190px;
+  }
+
+  .img-container {
+    width: 140px;
+    height: 190px;
+  }
+
+  /* Kid Section */
+  .kidsec .kidsec-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .kidsec .text-section {
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  .kidsec .image-section img {
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 20px;
+  }
+
+  /* Online Cinema */
+  .onlinecinema .movie-card {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .onlinecinema .movie-card img {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .onlinecinema .movie-details {
+    text-align: center;
+  }
+
+  .status {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  /* User Reviews Section */
+  .review .container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .review .card {
+    width: 100%;
+  }
+
+  .review .navigation {
     justify-content: center;
     margin-left: 0;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .faq-item {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer .features {
+    flex-direction: column;
+  }
+
+  .footer .feature-item {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Filimo Watch Section */
+  .filimo-watch-section {
+    padding: 20px 0;
+  }
+
+  .filimo-watch-section .text-section {
     margin-top: 30px;
+    padding: 0 10px;
+  }
+
+  .filimo-watch-section .subscribe-button {
+    width: 100%;
+    margin: 20px auto 0;
   }
 
   .filimo-watch-section .image-container {
     width: 100%;
     height: auto;
-    margin-left: 0;
-    margin-top: 20px;
-    gap: 8px;
   }
 
   .filimo-watch-section .image-container .image {
-    width: 150px;
-    height: 120px;
+    width: 100%;
+    height: 200px;
   }
 
   .filimo-watch-section .image-container .large-image {
-    width: 300px;
-    height: 220px;
+    width: 100%;
+    height: 300px;
     margin-left: 0;
   }
 
-
-/* Mobile View (480px and below) */
-
-  .filimo-watch-section {
-    padding: 20px 10px;
+  /* Filimo TV Watch Section */
+  .filimo-tv-watch-section .text-section {
+    padding: 10px;
   }
 
-  .filimo-watch-section .text-section {
-    margin-top: 20px;
+  .filimo-tv-watch-section .text-section h2 {
+    font-size: 16px;
+  }
+
+  .filimo-tv-watch-section .text-section p {
     margin-left: 0;
-    margin-right: 0;
-  }
-
-  .filimo-watch-section .text-section h2 {
-    font-size: 14px;
-    line-height: 1.2;
-  }
-
-  .filimo-watch-section .text-section p {
-    font-size: 11px;
-    line-height: 20px;
-  }
-
-  .filimo-watch-section .device img {
-    width: 20px;
-    height: 14px;
-  }
-
-  .filimo-watch-section .device .header {
-    font-size: 12px;
-  }
-
-  .filimo-watch-section .device p.main1,
-  .filimo-watch-section .device p.main2,
-  .filimo-watch-section .device p.main3 {
-    font-size: 10px;
-    margin-top: 70px;
-    left: 60px;
-  }
-
-  .filimo-watch-section .subscribe-button {
-    width: 120px;
-    height: 34px;
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
-  .filimo-watch-section .image-container .image {
-    width: 120px;
-    height: 90px;
-  }
-
-  .filimo-watch-section .image-container .large-image {
-    width: 250px;
-    height: 180px;
-  }
-
-/* Responsive Design */
-
-/* Tablet View (768px and below) */
-
-  .footer2 {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    padding: 15px 0;
-  }
-
-  .footer2 a {
-    font-size: 11px;
-    padding: 10px 0;
-  }
-
-  .footer2 .dropdown-content {
-    min-width: 140px;
-    font-size: 11px;
-  }
-
-  .footer2 .dropdown-content a {
-    padding: 10px 12px;
-  }
-
-  .footer2 .right-links {
-    flex-direction: column;
-    gap: 5px;
-    align-items: center;
     text-align: center;
   }
 
-  .footer2 .right-links a img {
-    width: 12px;
-    height: 12px;
+  /* Free Videos */
+  .freevid h3 {
+    font-size: 18px;
   }
 
-
-/* Mobile View (480px and below) */
-
-  .footer2 {
-    flex-direction: column;
-    height: auto;
-    padding: 10px 0;
+  .freevid .swiper-slide {
+    width: 100px;
+    height: 150px;
   }
 
-  .footer2 a {
-    font-size: 10px;
-    padding: 8px 0;
+  .img-container {
+    width: 100px;
+    height: 150px;
   }
 
-  .footer2 .dropdown-content {
-    min-width: 120px;
-    font-size: 10px;
-  }
-
-  .footer2 .dropdown-content a {
-    padding: 8px 10px;
-  }
-
-  .footer2 .right-links {
-    gap: 5px;
-  }
-
-  .footer2 .right-links a img {
-    width: 10px;
-    height: 10px;
-  }
-
-/* Responsive Design */
-
-/* Tablet View (768px and below) */
-
+  /* Kid Section */
   .kidsec {
-    padding: 20px;
-  }
-
-  .kidsec .kidsec-content {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 20px 0;
   }
 
   .kidsec .text-section {
-    max-width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-    text-align: center;
+    padding: 0 10px;
   }
 
+  /* Online Cinema */
+  .onlinecinema .movie-card {
+    padding: 10px;
+  }
+
+  .onlinecinema .movie-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* User Reviews Section */
+  .review h2 {
+    font-size: 20px;
+    margin-right: 20px;
+  }
+
+  /* FAQ Section */
+  .faq-item {
+    padding: 10px;
+  }
+
+  /* Footer */
+  .footer .features {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Filimo Watch Section */
+  .filimo-watch-section .text-section h2 {
+    font-size: 16px;
+  }
+
+  .filimo-watch-section .text-section p {
+    font-size: 12px;
+  }
+
+  .filimo-watch-section .subscribe-button {
+    width: 100%;
+    font-size: 12px;
+    height: 35px;
+  }
+
+  .filimo-watch-section .image-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .filimo-watch-section .image-container .image {
+    width: 100%;
+    height: 150px;
+  }
+
+  /* Filimo TV Watch Section */
+  .filimo-tv-watch-section .text-section h2 {
+    font-size: 14px;
+  }
+
+  .filimo-tv-watch-section .text-section p {
+    font-size: 11px;
+  }
+
+  .filimo-tv-watch-section .subscribe-button {
+    font-size: 11px;
+    height: 35px;
+  }
+
+  /* Free Videos */
+  .freevid h3 {
+    font-size: 16px;
+  }
+
+  .freevid .swiper-slide {
+    width: 80px;
+    height: 120px;
+  }
+
+  .img-container {
+    width: 80px;
+    height: 120px;
+  }
+
+  /* Kid Section */
   .kidsec .text-section h1 {
-    font-size: 18px;
-    line-height: 1.4;
+    font-size: 16px;
   }
 
   .kidsec .text-section p {
     font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-  }
-
-  .kidsec .image-section img {
-    max-width: 100%;
-    max-height: auto;
-  }
-
-
-/* Mobile View (480px and below) */
-
-  .kidsec {
-    padding: 15px 10px;
-  }
-
-  .kidsec .text-section h1 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-
-  .kidsec .text-section p {
-    font-size: 11px;
-    line-height: 16px;
   }
 
   .kidsec .text-section button {
-    padding: 8px 16px;
+    width: 100%;
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  /* Online Cinema */
+  .onlinecinema .text-section h2 {
+    font-size: 20px;
+  }
+
+  .onlinecinema .movie-card {
+    padding: 10px;
+  }
+
+  .onlinecinema .movie-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .onlinecinema .movie-details h3 {
+    font-size: 18px;
+  }
+
+  .onlinecinema .movie-details span {
     font-size: 12px;
   }
 
-  .kidsec .image-section img {
+  /* User Reviews Section */
+  .review h2 {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+  .review .navigation button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  /* FAQ Section */
+  .faq-item {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* Footer */
+  .footer .subscribe-button {
+    width: 100%;
+    font-size: 14px;
+    height: 45px;
+  }
+
+  .footer2 a {
+    font-size: 10px;
+  }
+
+  .footer2 .dropdown-content a {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .filimo-tv-watch-section .text-section h2 {
+    margin-right: 60px;
+  }
+
+  .filimo-tv-watch-section .text-section p {
+    margin-left: 150px;
+  }
+
+  .filimo-tv-watch-section .device {
+    margin-right: 60px;
+  }
+
+  .filimo-tv-watch-section .subscribe-button {
+    left: 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filimo-tv-watch-section {
+    padding: 30px 0;
+  }
+
+  .filimo-tv-watch-section .text-section h2 {
+    font-size: 17px;
+    margin-right: 20px;
+  }
+
+  .filimo-tv-watch-section .text-section p {
+    margin-left: 50px;
+    max-width: 300px;
+  }
+
+  .filimo-tv-watch-section .device {
+    margin-right: 40px;
+  }
+
+  .filimo-tv-watch-section .device .main {
+    margin-right: 20px;
+  }
+
+  .filimo-tv-watch-section .subscribe-button {
+    left: 150px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .filimo-tv-watch-section .text-section h2 {
+    font-size: 16px;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .filimo-tv-watch-section .text-section p {
+    margin-left: 20px;
     max-width: 100%;
-    max-height: auto;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .filimo-tv-watch-section .device {
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .filimo-tv-watch-section .device .main {
+    margin-right: 10px;
+  }
+
+  .filimo-tv-watch-section .subscribe-button {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .filimo-tv-watch-section .text-section h2 {
+    font-size: 15px;
+    margin-right: 5px;
+  }
+
+  .filimo-tv-watch-section .text-section p {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+
+  .filimo-tv-watch-section .device {
+    margin-right: 10px;
+  }
+
+  .filimo-tv-watch-section .device-header {
+    gap: 5px;
+  }
+
+  .filimo-tv-watch-section .device img {
+    width: 22px;
+    height: 15px;
+  }
+
+  .filimo-tv-watch-section .subscribe-button {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .topsw .swiper {
+    width: 100%;
+    height: 500px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 40px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 30px;
+    font-size: 16px;
+  }
+
+  .topsw .btn-overlay {
+    width: 250px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .topsw .swiper {
+    height: 450px;
+  }
+
+  .topsw .overlay-title {
+    font-size: 22px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 35px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 20px;
+    font-size: 15px;
+  }
+
+  .topsw .btn-overlay {
+    width: 220px;
+    height: 45px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topsw .swiper {
+    height: 400px;
+  }
+
+  .topsw .overlay-title {
+    font-size: 20px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 30px;
+  }
+
+  .topsw .overlay-text {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 15px;
+    font-size: 14px;
+  }
+
+  .topsw .btn-overlay {
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .topsw .swiper {
+    height: 350px;
+  }
+
+  .topsw .overlay-title {
+    font-size: 18px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 25px;
+  }
+
+  .topsw .overlay-text {
+    padding-top: 20px;
+    padding-bottom: 15px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 10px;
+    font-size: 13px;
+  }
+
+  .topsw .btn-overlay {
+    width: 180px;
+    height: 38px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .topsw .swiper {
+    height: 300px;
+  }
+
+  .topsw .overlay-title {
+    font-size: 16px;
+  }
+
+  .topsw .overlay-subtitle {
+    font-size: 22px;
+  }
+
+  .topsw .overlay-text {
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+
+  .topsw .overlay-text .feature-item {
+    margin: 0 8px;
+    font-size: 12px;
+  }
+
+  .topsw .btn-overlay {
+    width: 160px;
+    height: 35px;
+    font-size: 13px;
   }
 }
