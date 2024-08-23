@@ -747,207 +747,171 @@
 
   <!-- Initialize Swiper -->
   <script>
-    // Initialize Swiper
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Swipers
     var swiper1 = new Swiper(".mySwiper", {
-      autoplay: {
-        delay: 5000, // 5 seconds
-        disableOnInteraction: false,
-      },
-      effect: "fade", // Add this option to enable fade effect
-      fadeEffect: {
-        crossFade: true, // Enable cross-fade effect
-        duration: 5000,
-      },
-    });
-  
-    // Toggle between Movies and Series
-    document.getElementById('color_mode').addEventListener('change', function() {
-      var movieGallery = document.getElementById('movieGallery');
-      var seriesGallery = document.getElementById('seriesGallery');
-      if (this.checked) {
-        movieGallery.style.display = 'none';
-        seriesGallery.style.display = 'block';
-      } else {
-        movieGallery.style.display = 'block';
-        seriesGallery.style.display = 'none';
-      }
+        autoplay: {
+            delay: 5000, // 5 seconds
+            disableOnInteraction: false,
+        },
+        effect: "fade", // Add this option to enable fade effect
+        fadeEffect: {
+            crossFade: true, // Enable cross-fade effect
+        },
+        speed: 5000, // Control the duration of the transition
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById('color_mode').checked = true;
-      document.getElementById('color_mode').dispatchEvent(new Event('change'));
-    });
-    // free video swiper
-    document.addEventListener('DOMContentLoaded', function() {
-  new Swiper('.mySwiper2', {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 2,
-        spaceBetween: 10
-      },
-      480: {
-        slidesPerView: 3,
-        spaceBetween: 15
-      },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 20
-      },
-      992: {
-        slidesPerView: 6,
-        spaceBetween: 20
-      }
-    }
-  });
-});
-
-    //review section
-
-    const cards = document.querySelectorAll('.card');
-        const leftArrow = document.querySelector('.left-arrow');
-        const rightArrow = document.querySelector('.right-arrow');
-
-        let currentCardIndex = 0;
-
-        function showCards() {
-            cards.forEach((card, index) => {
-                if (index >= currentCardIndex && index < currentCardIndex + 3) {
-                    card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
-                }
-            });
-        }
-
-        function swapCards(direction) {
-            const nextCardIndex = currentCardIndex + direction;
-
-            if (nextCardIndex < 0 || nextCardIndex > cards.length - 3) {
-                return;
+    new Swiper('.mySwiper2', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10
+            },
+            480: {
+                slidesPerView: 3,
+                spaceBetween: 15
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+            992: {
+                slidesPerView: 6,
+                spaceBetween: 20
             }
+        }
+    });
 
-            currentCardIndex = nextCardIndex;
-            showCards();
+    // Toggle between Movies and Series
+    document.getElementById('color_mode').addEventListener('change', function () {
+        var movieGallery = document.getElementById('movieGallery');
+        var seriesGallery = document.getElementById('seriesGallery');
+        if (this.checked) {
+            movieGallery.style.display = 'none';
+            seriesGallery.style.display = 'block';
+        } else {
+            movieGallery.style.display = 'block';
+            seriesGallery.style.display = 'none';
+        }
+    });
+
+    // Auto-toggle on page load
+    document.getElementById('color_mode').checked = true;
+    document.getElementById('color_mode').dispatchEvent(new Event('change'));
+
+    // Review section
+    const cards = document.querySelectorAll('.card');
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+
+    let currentCardIndex = 0;
+
+    function showCards() {
+        cards.forEach((card, index) => {
+            card.classList.toggle('active', index >= currentCardIndex && index < currentCardIndex + 3);
+        });
+    }
+
+    function swapCards(direction) {
+        const nextCardIndex = currentCardIndex + direction;
+
+        if (nextCardIndex < 0 || nextCardIndex > cards.length - 3) {
+            return;
         }
 
-        leftArrow.addEventListener('click', () => {
-            swapCards(-1);
-        });
-
-        rightArrow.addEventListener('click', () => {
-            swapCards(1);
-        });
-
+        currentCardIndex = nextCardIndex;
         showCards();
+    }
 
-        let autoSwapInterval = setInterval(() => {
+    leftArrow.addEventListener('click', () => {
+        swapCards(-1);
+        resetAutoSwap();
+    });
+
+    rightArrow.addEventListener('click', () => {
+        swapCards(1);
+        resetAutoSwap();
+    });
+
+    showCards();
+
+    let autoSwapInterval = setInterval(() => {
+        swapCards(1);
+    }, 5000); // Automatic swapping every 5 seconds
+
+    function resetAutoSwap() {
+        clearInterval(autoSwapInterval);
+        autoSwapInterval = setInterval(() => {
             swapCards(1);
-        }, 5000); // Change the interval (in milliseconds) for automatic swapping
+        }, 5000);
+    }
 
-        // Stop automatic swapping when the user interacts with the arrows
-        leftArrow.addEventListener('click', () => {
-            clearInterval(autoSwapInterval);
-            autoSwapInterval = setInterval(() => {
-                swapCards(1);
-            }, 5000);
-        });
-
-        rightArrow.addEventListener('click', () => {
-            clearInterval(autoSwapInterval);
-            autoSwapInterval = setInterval(() => {
-                swapCards(1);
-            }, 5000);
-        });
-
-        //FAQ
-       
-        document.addEventListener('DOMContentLoaded', () => {
-      const faqItems = document.querySelectorAll('.faq-item');
-
+    // FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
 
         question.addEventListener('click', () => {
             item.classList.toggle('open');
-
-            if (item.classList.contains('open')) {
-                // Set the max-height to the scrollHeight to allow smooth expansion
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            } else {
-                // Set max-height to 0 for smooth collapse
-                answer.style.maxHeight = '0';
-            }
+            answer.style.maxHeight = item.classList.contains('open') ? answer.scrollHeight + 'px' : '0';
         });
     });
-});
- //footer
- document.addEventListener('DOMContentLoaded', function () {
+
+    // Footer
     const dropdown = document.querySelector('.dropdown');
     const dropdownContent = document.querySelector('.dropdown-content');
 
-    // Toggle dropdown visibility on click (for touch devices)
     dropdown.addEventListener('click', function (event) {
         event.preventDefault();
         dropdownContent.classList.toggle('show');
     });
 
-    // Close the dropdown if the user clicks outside of it
     window.addEventListener('click', function (e) {
-        if (!dropdown.contains(e.target)) {
+        if (!dropdown.contains(e.target) && !dropdownContent.contains(e.target)) {
             dropdownContent.classList.remove('show');
         }
     });
-  });
 
-  //main section
-  document.addEventListener("DOMContentLoaded", function () {
+    // Main section gallery
     const galleryImages = document.querySelectorAll('.gallery img');
     const mainSections = document.querySelectorAll('.mainsection');
 
-    // Function to show the default section (series6) and mark it as selected
     function showDefaultSection() {
-      const defaultSectionId = 'series6'; // Set to 'series6' to show the sixth series by default
-      document.getElementById(defaultSectionId).style.display = 'block';
-
-      // Mark the corresponding image as selected
-      document.querySelector(`.gallery img[data-related="${defaultSectionId}"]`).classList.add('selected');
+        const defaultSectionId = 'series6';
+        document.getElementById(defaultSectionId).style.display = 'block';
+        document.querySelector(`.gallery img[data-related="${defaultSectionId}"]`).classList.add('selected');
     }
 
     galleryImages.forEach(image => {
-      image.addEventListener('click', () => {
-        const relatedSectionId = image.getAttribute('data-related');
+        image.addEventListener('click', () => {
+            const relatedSectionId = image.getAttribute('data-related');
 
-        // Hide all main sections
-        mainSections.forEach(section => {
-          section.style.display = 'none';
+            mainSections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            document.getElementById(relatedSectionId).style.display = 'block';
+
+            galleryImages.forEach(img => {
+                img.classList.remove('selected');
+            });
+
+            image.classList.add('selected');
+
+            document.getElementById(relatedSectionId).scrollIntoView({ behavior: 'smooth' });
         });
-
-        // Show the related main section
-        document.getElementById(relatedSectionId).style.display = 'block';
-
-        // Remove 'selected' class from all images
-        galleryImages.forEach(img => {
-          img.classList.remove('selected');
-        });
-
-        // Add 'selected' class to the clicked image
-        image.classList.add('selected');
-
-        // Scroll to the main section
-        document.getElementById(relatedSectionId).scrollIntoView({ behavior: 'smooth' });
-      });
     });
 
-    // Show the default section (series6) and mark its image as selected when the page loads
     showDefaultSection();
-  });
+});
+
 </script>
   </script>
 </body>
