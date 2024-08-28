@@ -1806,6 +1806,9 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 576px) {
+  .navbar .container-fluid{
+    background-color: #000;
+  }
   .navbar .container-fluid a {
     font-size: 10px;
     margin-right: 5px;
@@ -1830,8 +1833,8 @@ input:checked + .slider:before {
 
   .topsw .btn-overlay {
     width: 100%;
-    height: 45px;
-    font-size: 16px;
+    height: 46px;
+    font-size: 7px;
   }
 
   .mainsection .title {
@@ -1844,6 +1847,7 @@ input:checked + .slider:before {
 
   .mainsection .episode {
     max-width: 100%; /* Full-width episodes on mobile */
+    
   }
 
   .gallery img {
@@ -1857,7 +1861,11 @@ input:checked + .slider:before {
   .topsw .adjust-this-image {
     height: 30vh;
   }
+  .footer2 a {
+    font-size: 10px;
+  }
 }
+
 
 @media (max-width: 480px) {
   .navbar .container-fluid a {
@@ -1907,6 +1915,9 @@ input:checked + .slider:before {
 
   .topsw .adjust-this-image {
     height: 25vh;
+  }
+  .footer2 a {
+    font-size: 10px;
   }
 }
 
@@ -2249,13 +2260,21 @@ input:checked + .slider:before {
   .review .navigation button {
     width: 30px;
     height: 30px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   /* FAQ Section */
   .faq-item {
     padding: 8px;
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+  .faq-item .faq-question {
+    font-size: 9px;
+  }
+
+  .faq-item .faq-answer {
+    font-size: 6px;
   }
 
   /* Footer */
@@ -2458,6 +2477,12 @@ input:checked + .slider:before {
 @media screen and (max-width: 576px) {
   .topsw .swiper {
     height: 350px;
+   
+  }
+  .topsw .swiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .topsw .overlay-title {
@@ -2481,8 +2506,80 @@ input:checked + .slider:before {
   .topsw .btn-overlay {
     width: 180px;
     height: 38px;
-    font-size: 14px;
+    font-size: 12px;
   }
+  .topsw .overlay-footer {
+    font-size: 10px;
+  }
+  .mainsection .header img{
+    width: 130px;
+    position: absolute;
+    left: 15%;
+    bottom: 950px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+
+  }
+  .mainsection .title {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .mainsection .text {
+    font-size: 12px;
+  }
+
+  .mainsection .description {
+    font-size: 12px;
+  }
+
+  .mainsection .episode-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mainsection .episode-list .episode {
+    margin-bottom: 20px;
+  }
+
+  .mainsection .episode-list .episode img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .filimo-watch-section {
+    padding: 5px;
+  }
+  .filimo-watch-section .text-section {
+    margin-bottom: 5px;
+  }
+  .filimo-watch-section .text-section {
+    margin-bottom: 5px;
+  }
+  .filimo-watch-section .text-section h2{
+    font-size: 16px;
+    text-align: right;
+    margin-right: 140px;
+
+  }
+
+  .filimo-watch-section .text-section p{
+    font-size: 12px;
+    text-align: right;
+    margin-right: 140px;
+  }
+  .filimo-watch-section .image-section img{
+    width: 50px;
+    height: 50px;
+
+  }
+  .filimo-watch-section .device .header {
+    font-size: 10px;
+  }
+
+  
+
+  
 }
 
 @media screen and (max-width: 375px) {
@@ -2514,3 +2611,5 @@ input:checked + .slider:before {
     font-size: 13px;
   }
 }
+
+
